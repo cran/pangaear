@@ -4,15 +4,18 @@
 \alias{pg_search}
 \title{Search the Pangaea database}
 \usage{
-pg_search(query, count = 10, topic = NULL, bbox = NULL, mindate = NULL,
-  maxdate = NULL, ...)
+pg_search(query, count = 10, offset = 0, topic = NULL, bbox = NULL,
+  mindate = NULL, maxdate = NULL, ...)
 }
 \arguments{
 \item{query}{(character) Query terms. You can refine a search by prefixing
 the term(s) with a category, one of citation, reference, parameter, event,
 project, campaign, or basis. See examples.}
 
-\item{count}{(integer) Number of items to return.}
+\item{count}{(integer) Number of items to return. Default: 10. Maximum: 500.
+Use \code{offset} parameter to page through results - see examples}
+
+\item{offset}{(integer) Record number to start at. Default: 0}
 
 \item{topic}{(character) topic area: one of NULL (all areas), "Agriculture",
 "Atomosphere", "Biological Classification", "Biospshere", "Chemistry",
@@ -25,18 +28,18 @@ maxlat}
 \item{mindate, maxdate}{(character) Dates to search for, of the form
 "2014-10-28"}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \code{\link[httr:GET]{httr::GET()}}}
 }
 \value{
 tibble/data.frame with the structure:
 \itemize{
- \item score - match score, higher is a better match
- \item doi - the DOI for the data package
- \item size - size number
- \item size_measure - size measure, one of "data points" or "datasets"
- \item citation - citation for the data package
- \item supplement_to - citation for what the data package is a
- supplement to
+\item score - match score, higher is a better match
+\item doi - the DOI for the data package
+\item size - size number
+\item size_measure - size measure, one of "data points" or "datasets"
+\item citation - citation for the data package
+\item supplement_to - citation for what the data package is a
+supplement to
 }
 }
 \description{
@@ -53,7 +56,6 @@ pg_search(query='water', count=2)
 pg_search(query='water', count=20)
 pg_search(query='water', mindate="2013-06-01", maxdate="2013-07-01")
 pg_search(query='water', bbox=c(-124.2, 41.8, -116.8, 46.1))
-pg_search(query='citation:Archer', config=verbose())
 pg_search(query='reference:Archer')
 pg_search(query='parameter:"carbon dioxide"')
 pg_search(query='event:M2-track')
@@ -62,12 +64,25 @@ pg_search(query='project:Joint Global Ocean Flux Study')
 pg_search(query='campaign:M2')
 pg_search(query='basis:Meteor')
 
+# paging with count and offset
+# max is 500 records per request - if you need > 500, use offset and count
+res1 <- pg_search(query = "florisphaera", count = 500, offset = 0)
+res2 <- pg_search(query = "florisphaera", count = 500, offset = 500)
+res3 <- pg_search(query = "florisphaera", count = 500, offset = 1000)
+do.call("rbind.data.frame", list(res1, res2, res3))
+
 # get attributes: maxScore, totalCount, and offset
 res <- pg_search(query='water', bbox=c(-124.2, 41.8, -116.8, 46.1))
 attributes(res)
 attr(res, "maxScore")
 attr(res, "totalCount")
 attr(res, "offset")
-}
-}
 
+# curl options
+library(httr)
+pg_search(query='citation:Archer', config = verbose())
+}
+}
+\seealso{
+\code{\link[=pg_search_es]{pg_search_es()}}
+}

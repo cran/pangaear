@@ -14,7 +14,7 @@ test_that("pg_list_sets() works", {
 
   aa <- pg_list_sets()
 
-  expect_is(aa, "oai_df")
+  expect_is(aa, "tbl_df")
   expect_is(aa$setSpec, "character")
   expect_is(aa$setName, "character")
 })
@@ -22,7 +22,8 @@ test_that("pg_list_sets() works", {
 # test_that("pg_list_records() works", {
 #   skip_on_cran()
 #
-#   aa <- pg_list_records(from='2015-09-01', until='2015-10-03', config=verbose())
+#   aa <-
+# pg_list_records(from='2015-09-01', until='2015-10-03', config=verbose())
 #
 #   expect_is(aa, "data.frame")
 #   expect_is(aa, "oai_df")
@@ -55,10 +56,12 @@ test_that("pg_get_record() works", {
 
   aa <- pg_get_record(identifier = "oai:pangaea.de:doi:10.1594/PANGAEA.788382")
 
-  expect_is(aa, "data.frame")
-  expect_is(aa, "oai_df")
-  expect_match(aa$identifier, "oai:pangaea.de")
-  expect_match(aa$datestamp, "[0-9]{4}-[0-9]{2}-[0-9]{2}")
+  expect_is(aa, "list")
+  expect_is(aa[[1]], "list")
+  expect_is(aa[[1]]$header, "tbl_df")
+  expect_is(aa[[1]]$metadata, "tbl_df")
+  expect_match(aa[[1]]$header$identifier, "oai:pangaea.de")
+  expect_match(aa[[1]]$header$datestamp, "[0-9]{4}-[0-9]{2}-[0-9]{2}")
 })
 
 test_that("fails well", {
@@ -67,5 +70,6 @@ test_that("fails well", {
   expect_error(pg_list_sets(as = "adsff"), "not in acceptable")
   expect_error(pg_list_records(prefix = "adsfadf"), "unknown")
   expect_error(pg_list_identifiers(from = 3), "Invalid datestamp")
-  expect_error(pg_get_record(identifier = 4444), "Identifier is not a valid OAI")
+  expect_error(pg_get_record(identifier = 4444),
+               "Identifier is not a valid OAI")
 })

@@ -9,7 +9,7 @@ pg_list_identifiers(prefix = "oai_dc", from = NULL, until = NULL,
 }
 \arguments{
 \item{prefix}{A character string to specify the metadata format in OAI-PMH
-requests issued to the repository. The default (\code{"oai_dc"}) corresponds
+requests issued to the repository. The default (\code{oai_dc}) corresponds
 to the mandatory OAI unqualified Dublin Core metadata schema.}
 
 \item{from}{Character string giving datestamp to be used as lower bound for
@@ -25,28 +25,45 @@ with datestamps in the given range).}
 \item{set}{A character string giving a set to be used for selective
 harvesting (i.e., only harvest records in the given set).}
 
-\item{token}{(character) a token previously provided by the server to resume a
-request where it last left off. 50 is max number of records returned. We will
-loop for you internally to get all the records you asked for.}
+\item{token}{(character) a token previously provided by the server to
+resume a request where it last left off. 50 is max number of records
+returned. We will loop for you internally to get all the records you
+asked for.}
 
 \item{as}{(character) What to return. One of "df" (for data.frame; default),
 "list", or "raw" (raw text)}
 
-\item{...}{Curl debugging options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl debugging options passed on to \code{\link[httr:GET]{httr::GET()}}}
 }
 \value{
-XML character string, data.frame, or list, depending on what requested
-witht the \code{as} parameter
+XML character string, data.frame, or list, depending on what
+requested with the \code{as} parameter
 }
 \description{
 List identifiers of the Pangaea repository
 }
 \examples{
 \dontrun{
-pg_list_identifiers(from=Sys.Date()-1, until=Sys.Date())
+pg_list_identifiers(
+  from = paste0(Sys.Date() - 2, "T00:00:00Z"),
+  until = paste0(Sys.Date() - 1, "T18:00:00Z")
+)
 pg_list_identifiers(set="geocode1", from=Sys.Date()-1, until=Sys.Date())
 pg_list_identifiers(prefix="iso19139", from=Sys.Date()-1, until=Sys.Date())
-pg_list_identifiers(prefix="dif", from=Sys.Date()-1, until=Sys.Date())
+pg_list_identifiers(prefix="dif",
+  from = paste0(Sys.Date() - 2, "T00:00:00Z"),
+  until = paste0(Sys.Date() - 1, "T18:00:00Z")
+)
 }
 }
+\references{
+\href{https://www.openarchives.org/pmh/}{OAI-PMH documentation}
+}
+\seealso{
+wraps \code{\link[oai:list_identifiers]{oai::list_identifiers()}}
 
+Other oai methods: \code{\link{pg_get_record}},
+  \code{\link{pg_identify}},
+  \code{\link{pg_list_metadata_formats}},
+  \code{\link{pg_list_records}}, \code{\link{pg_list_sets}}
+}

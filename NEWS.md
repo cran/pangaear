@@ -1,3 +1,26 @@
+pangaear 0.3.0
+==============
+
+## NEW FEATURES
+
+* New function `pg_search_es` - an interface to Pangaea's Elasticsearch
+query interface.
+
+## MINOR IMPROVEMENTS
+
+* added more tests (#57)
+* now using markdown in docs 
+* tidy code to 80 line width
+
+## BUG FIXES
+
+* fixed bug in oai functions due to changed base url for the 
+Pangaea OAI server (#53)
+* Fix to `pg_search` as search portal now has offset param - so if
+more than 500 results need to page through them with the 
+`offset` parameter (#56)
+
+
 pangaear 0.2.4
 ==============
 

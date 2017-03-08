@@ -1,25 +1,25 @@
 #' Download data from Pangaea.
 #'
 #' Grabs data as a dataframe or list of dataframes from a Pangaea data
-#' repository URI; see: \url{https://www.pangaea.de/}.
+#' repository URI; see: <https://www.pangaea.de/>
 #'
 #' @export
 #' @param doi DOI of Pangaeae single dataset, or of a collection of datasets.
-#' Expects either just a DOI of the form \code{10.1594/PANGAEA.746398}, or with
+#' Expects either just a DOI of the form `10.1594/PANGAEA.746398`, or with
 #' the URL part in front, like
-#' \code{https://doi.pangaea.de/10.1594/PANGAEA.746398}
+#' <https://doi.pangaea.de/10.1594/PANGAEA.746398>
 #' @param overwrite (logical) Ovewrite a file if one is found with the same name
-#' @param verbose (logical) print information messages. Default: \code{TRUE}
-#' @param ... Curl options passed on to \code{\link[httr]{GET}}
+#' @param verbose (logical) print information messages. Default: `TRUE`
+#' @param ... Curl options passed on to [httr::GET()]
 #' @param prompt (logical) Prompt before clearing all files in cache? No prompt
-#' used when DOIs assed in. Default: \code{TRUE}
+#' used when DOIs assed in. Default: `TRUE`
 #' @return One or more items of class pangaea, each with a citation object,
 #' metadata object, and data object. Each data object is printed as a
-#' \code{tbl_df} object, but the actual object is simply a \code{data.frame}.
+#' `tbl_df` object, but the actual object is simply a `data.frame`.
 #' @author Naupaka Zimmerman
-#' @references \url{https://www.pangaea.de}
+#' @references <https://www.pangaea.de>
 #' @details Data files are stored in an operating system appropriate location.
-#' Run \code{rappdirs::user_cache_dir("pangaear")} to get the storage location
+#' Run `rappdirs::user_cache_dir("pangaear")` to get the storage location
 #' on your machine.
 #' @examples \dontrun{
 #' # a single file
@@ -64,7 +64,6 @@
 #' pg_data(res$doi[2])
 #' pg_data(res$doi[3])
 #' pg_data(res$doi[4])
-#' pg_data(res$doi[5])
 #' }
 
 pg_data <- function(doi, overwrite = TRUE, verbose = TRUE, ...) {
@@ -150,7 +149,7 @@ check_many <- function(x){
     x
   } else {
     gsub("https://doi.pangaea.de/", "", xml_attr(
-      xml_find_all(txt, ".//div[@class=\"MetaHeaderItem\"]//a[@rel=\"follow\"]"),
+    xml_find_all(txt, ".//div[@class=\"MetaHeaderItem\"]//a[@rel=\"follow\"]"),
       "href"
     ))
   }
@@ -161,7 +160,10 @@ fix_doi <- function(x) {
     x
   } else {
     # make sure doi is cleaned up before making a url
-    if (!grepl("^10.1594", x)) stop(x, " not of right form, expecting a DOI, see pg_data help file", call. = FALSE)
+    if (!grepl("^10.1594", x)) {
+      stop(x, " not of right form, expecting a DOI, see pg_data help file",
+           call. = FALSE)
+    }
     paste0(base(), x)
   }
 }

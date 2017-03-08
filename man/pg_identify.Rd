@@ -7,7 +7,7 @@
 pg_identify(...)
 }
 \arguments{
-\item{...}{Curl debugging options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl debugging options passed on to \code{\link[httr:GET]{httr::GET()}}}
 }
 \value{
 list
@@ -20,4 +20,14 @@ Identify information about the Pangaea repository
 pg_identify()
 }
 }
+\references{
+\href{https://www.openarchives.org/pmh/}{OAI-PMH documentation}
+}
+\seealso{
+wraps \code{\link[oai:id]{oai::id()}}
 
+Other oai methods: \code{\link{pg_get_record}},
+  \code{\link{pg_list_identifiers}},
+  \code{\link{pg_list_metadata_formats}},
+  \code{\link{pg_list_records}}, \code{\link{pg_list_sets}}
+}

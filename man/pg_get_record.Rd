@@ -9,18 +9,18 @@ pg_get_record(identifier, prefix = "oai_dc", as = "df", ...)
 \arguments{
 \item{identifier}{Dataset identifier. See Examples.}
 
-\item{prefix}{A character string to specify the metadata format in OAI-PMH requests issued to
-the repository. The default (\code{"oai_dc"}) corresponds to the mandatory OAI unqualified
-Dublin Core metadata schema.}
+\item{prefix}{A character string to specify the metadata format in OAI-PMH
+requests issued to the repository. The default (\code{oai_dc}) corresponds
+to the mandatory OAI unqualified Dublin Core metadata schema.}
 
 \item{as}{(character) What to return. One of "df" (for data.frame; default),
 "list", or "raw" (raw text)}
 
-\item{...}{Curl debugging options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl debugging options passed on to \code{\link[httr:GET]{httr::GET()}}}
 }
 \value{
-XML character string, data.frame, or list, depending on what requested
-witht the \code{as} parameter
+XML character string, data.frame, or list, depending on what
+requested with the \code{as} parameter
 }
 \description{
 Get record from the Pangaea repository
@@ -35,11 +35,23 @@ prefix="dif")
 
 # curl options
 library('httr')
-pg_get_record(identifier = "oai:pangaea.de:doi:10.1594/PANGAEA.788382", config=verbose())
+pg_get_record(identifier = "oai:pangaea.de:doi:10.1594/PANGAEA.788382",
+  config=verbose())
 
 # invalid record id
 # pg_get_record(identifier = "oai:pangaea.de:doi:10.1594/PANGAEA.11111")
-# pg_get_record(identifier = "oai:pangaea.de:doi:10.1594/PANGAEA.11111", prefix="adfadf")
+# pg_get_record(identifier = "oai:pangaea.de:doi:10.1594/PANGAEA.11111",
+#   prefix="adfadf")
 }
 }
+\references{
+\href{https://www.openarchives.org/pmh/}{OAI-PMH documentation}
+}
+\seealso{
+wraps \code{\link[oai:get_records]{oai::get_records()}}
 
+Other oai methods: \code{\link{pg_identify}},
+  \code{\link{pg_list_identifiers}},
+  \code{\link{pg_list_metadata_formats}},
+  \code{\link{pg_list_records}}, \code{\link{pg_list_sets}}
+}

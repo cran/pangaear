@@ -7,18 +7,19 @@
 pg_list_sets(token = NULL, as = "df", ...)
 }
 \arguments{
-\item{token}{(character) a token previously provided by the server to resume a
-request where it last left off. 50 is max number of records returned. We will
-loop for you internally to get all the records you asked for.}
+\item{token}{(character) a token previously provided by the server to
+resume a request where it last left off. 50 is max number of records
+returned. We will loop for you internally to get all the records you
+asked for.}
 
 \item{as}{(character) What to return. One of "df" (for data.frame; default),
 "list", or "raw" (raw text)}
 
-\item{...}{Curl debugging options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl debugging options passed on to \code{\link[httr:GET]{httr::GET()}}}
 }
 \value{
-XML character string, data.frame, or list, depending on what requested
-witht the \code{as} parameter
+XML character string, data.frame, or list, depending on what
+requested with the \code{as} parameter
 }
 \description{
 List the set structure of the Pangaea repository
@@ -32,4 +33,15 @@ library('httr')
 res <- pg_list_sets(config = verbose())
 }
 }
+\references{
+\href{https://www.openarchives.org/pmh/}{OAI-PMH documentation}
+}
+\seealso{
+wraps \code{\link[oai:list_sets]{oai::list_sets()}}
 
+Other oai methods: \code{\link{pg_get_record}},
+  \code{\link{pg_identify}},
+  \code{\link{pg_list_identifiers}},
+  \code{\link{pg_list_metadata_formats}},
+  \code{\link{pg_list_records}}
+}

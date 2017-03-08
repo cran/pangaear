@@ -1,8 +1,11 @@
 #' Identify information about the Pangaea repository
 #'
 #' @export
-#' @param ... Curl debugging options passed on to \code{\link[httr]{GET}}
+#' @param ... Curl debugging options passed on to [httr::GET()]
 #' @return list
+#' @references [OAI-PMH documentation](https://www.openarchives.org/pmh/)
+#' @seealso wraps [oai::id()]
+#' @family oai methods
 #' @examples \dontrun{
 #' pg_identify()
 #' }
@@ -22,6 +25,7 @@ print.pg_identify <- function(x, ...){
   cat("  earliestDatestamp: ", x$earliestDatestamp, "\n", sep = "")
   cat("  deletedRecord: ", x$deletedRecord, "\n", sep = "")
   cat("  granularity: ", x$granularity, "\n", sep = "")
-  cat("  compression: ", paste0(x[ names(x) %in% "compression" ], collapse = ","), "\n", sep = "")
+  cat("  compression: ", paste0(x[ names(x) %in% "compression" ],
+                                collapse = ","), "\n", sep = "")
   cat("  description: ", x$description, "\n", sep = "")
 }

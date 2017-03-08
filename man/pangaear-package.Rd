@@ -2,10 +2,15 @@
 % Please edit documentation in R/pangaear-package.R
 \docType{package}
 \name{pangaear-package}
-\alias{pangaear}
 \alias{pangaear-package}
+\alias{pangaear}
 \title{Client for the Pangaea Database}
 \description{
-Client for the Pangaea Database
+\href{https://www.pangaea.de/}{Pangaea database}
 }
-
+\details{
+Package includes tools to interact with the Pangaea Database,
+including functions for searching for data, fetching datasets by
+dataset ID, working with the Pangaea OAI-PMH service, and
+Elasticsearch service.
+}

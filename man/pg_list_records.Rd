@@ -9,7 +9,7 @@ pg_list_records(prefix = "oai_dc", from = NULL, until = NULL,
 }
 \arguments{
 \item{prefix}{A character string to specify the metadata format in OAI-PMH
-requests issued to the repository. The default (\code{"oai_dc"}) corresponds
+requests issued to the repository. The default (\code{oai_dc}) corresponds
 to the mandatory OAI unqualified Dublin Core metadata schema.}
 
 \item{from}{Character string giving datestamp to be used as lower bound for
@@ -33,7 +33,7 @@ asked for.}
 \item{as}{(character) What to return. One of "df" (for data.frame; default),
 "list", or "raw" (raw text)}
 
-\item{...}{Curl debugging options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl debugging options passed on to \code{\link[httr:GET]{httr::GET()}}}
 }
 \value{
 XML character string, data.frame, or list, depending on what
@@ -44,16 +44,14 @@ List records from Pangaea
 }
 \examples{
 \dontrun{
-pg_list_records(set='geomound', from=Sys.Date()-10, until=Sys.Date())
+pg_list_records(set='citable', from=Sys.Date()-1, until=Sys.Date())
 
 # When no results found > "'noRecordsMatch'"
 # pg_list_records(set='geomound', from='2015-01-01', until='2015-01-01')
 
-# More examples
-pg_list_records(set='citable', from=Sys.Date()-1, until=Sys.Date())
-
 pg_list_records(prefix="iso19139", set='citable', from=Sys.Date()-1,
   until=Sys.Date())
+
 ## FIXME - below are broken
 # pg_list_records(prefix="dif", set='citable', from=Sys.Date()-4,
 #   until=Sys.Date())
@@ -61,4 +59,15 @@ pg_list_records(prefix="iso19139", set='citable', from=Sys.Date()-1,
 #   until=Sys.Date())
 }
 }
+\references{
+\href{https://www.openarchives.org/pmh/}{OAI-PMH documentation}
+}
+\seealso{
+wraps \code{\link[oai:list_records]{oai::list_records()}}
 
+Other oai methods: \code{\link{pg_get_record}},
+  \code{\link{pg_identify}},
+  \code{\link{pg_list_identifiers}},
+  \code{\link{pg_list_metadata_formats}},
+  \code{\link{pg_list_sets}}
+}
