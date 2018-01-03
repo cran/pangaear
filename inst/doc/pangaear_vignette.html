@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Introduction to pangaear</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{Introduction to pangaear}
+%\VignetteEncoding{UTF-8}
+-->
+
+<h1>Introduction to pangaear</h1>
+
+<p><code>pangaear</code> is a data retrieval interface for the World Data Center PANGAEA (<a href="https://www.pangaea.de/">https://www.pangaea.de/</a>). PANGAEA archieves published Earth &amp; Environmental Science data under the following subjects: agriculture, atmosphere, biological classification, biosphere, chemistry, cryosphere, ecology, fisheries, geophysics, human dimensions, lakes &amp; rives, land surface, lithosphere, oceans, and paleontology.</p>
+
+<h2>Installation</h2>
+
+<p>If you&#39;ve not installed it yet, install from CRAN:</p>
+
+<pre><code class="r">install.packages(&quot;pangaear&quot;)
+</code></pre>
+
+<p>Or the development version:</p>
+
+<pre><code class="r">devtools::install_github(&quot;ropensci/pangaear&quot;)
+</code></pre>
+
+<h2>Load pangaear</h2>
+
+<pre><code class="r">library(&quot;pangaear&quot;)
+</code></pre>
+
+<h2>Search for data</h2>
+
+<p><code>pg_search</code> is a thin wrapper around the GUI search interface on the page <a href="https://www.pangaea.de/">https://www.pangaea.de/</a>. Everything you can do there, you can do here.</p>
+
+<p>For example, query for the term &#39;water&#39;, with a bounding box, and return only three results.</p>
+
+<pre><code class="r">pg_search(query = &#39;water&#39;, bbox = c(-124.2, 41.8, -116.8, 46.1), count = 3)
+</code></pre>
+
+<pre><code>#&gt; # A tibble: 3 x 6
+#&gt;   score doi                       size size_measure citation  supplement_…
+#&gt;   &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;       
+#&gt; 1  20.0 10.1594/PANGAEA.812094    2.00 datasets     Simonyan… Simonyan, A…
+#&gt; 2  11.0 10.1594/PANGAEA.736010    9.00 datasets     Archer, … Archer, DE;…
+#&gt; 3  10.9 10.1594/PANGAEA.874893 4152    data points  Uhlig, C… Uhlig, C; L…
+</code></pre>
+
+<p>The resulting <code>data.frame</code> has details about different studies, and you can use the DOIs (Digital Object Identifiers) to get data and metadata for any studies you&#39;re interested in.</p>
+
+<h3>Another search option</h3>
+
+<p>There&#39;s another search option with the <code>pg_search_es</code> function. It is an interface to the Pangaea Elasticsearch interface. This provides a very flexible interface for search Pangaea data - though it is different from what you&#39;re used to with the Pangaea website. </p>
+
+<pre><code class="r">(res &lt;- pg_search_es())
+</code></pre>
+
+<pre><code>#&gt; # A tibble: 10 x 42
+#&gt;    `_ind… `_typ… `_id` `_sc… `_so… `_sour… `_sour… `_so… `_so… `_so… `_so…
+#&gt;  * &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;lis&gt; &lt;lis&gt; &lt;int&gt; &lt;chr&gt;
+#&gt;  1 panga… panmd  7847…  1.00 2017… 5.00e⁻¹ Owens … &lt;chr… &lt;chr…     1 D203A
+#&gt;  2 panga… panmd  8453…  1.00 2017… 1.10e⁺¹ Maturi… &lt;chr… &lt;chr…     3 WCRP…
+#&gt;  3 panga… panmd  3806…  1.00 2017… 1.00e⁺¹ König-… &lt;chr… &lt;chr…     1 ANT-…
+#&gt;  4 panga… panmd  8467…  1.00 2017… 2.00e⁺⁰ Colle … &lt;chr… &lt;chr…     3 WCRP…
+#&gt;  5 panga… panmd  8467…  1.00 2017… 2.00e⁺⁰ Denn F… &lt;chr… &lt;chr…     3 WCRP…
+#&gt;  6 panga… panmd  7077…  1.00 2017… 4.91e⁺² Vuille… &lt;chr… &lt;chr…     3 WCRP…
+#&gt;  7 panga… panmd  67642  1.00 2017… 1.00e⁻² Hebbel… &lt;chr… &lt;chr…     1 SO15…
+#&gt;  8 panga… panmd  8373…  1.00 2017… 1.39e⁺⁰ WOCE H… &lt;chr… &lt;chr…     1 33KM…
+#&gt;  9 panga… panmd  8469…  1.00 2017… 2.00e⁺⁰ Long C… &lt;chr… &lt;chr…     3 WCRP…
+#&gt; 10 panga… panmd  8469…  1.00 2017… 2.00e⁺⁰ Tamlyn… &lt;chr… &lt;chr…     3 WCRP…
+#&gt; # ... with 31 more variables: `_source.agg-author` &lt;list&gt;,
+#&gt; #   `_source.eastBoundLongitude` &lt;dbl&gt;, `_source.URI` &lt;chr&gt;,
+#&gt; #   `_source.agg-pubYear` &lt;int&gt;, `_source.minDateTime` &lt;chr&gt;,
+#&gt; #   `_source.agg-geometry` &lt;chr&gt;, `_source.xml-thumb` &lt;chr&gt;,
+#&gt; #   `_source.agg-mainTopic` &lt;list&gt;, `_source.xml` &lt;chr&gt;,
+#&gt; #   `_source.elevationGeocode` &lt;chr&gt;, `_source.maxDateTime` &lt;chr&gt;,
+#&gt; #   `_source.xml-sitemap` &lt;chr&gt;, `_source.agg-topic` &lt;list&gt;,
+#&gt; #   `_source.westBoundLongitude` &lt;dbl&gt;, `_source.agg-project` &lt;chr&gt;,
+#&gt; #   `_source.northBoundLatitude` &lt;dbl&gt;, `_source.sp-dataStatus` &lt;int&gt;,
+#&gt; #   `_source.sp-hidden` &lt;lgl&gt;, `_source.agg-location` &lt;list&gt;,
+#&gt; #   `_source.internal-source` &lt;chr&gt;, `_source.agg-basis` &lt;chr&gt;,
+#&gt; #   `_source.southBoundLatitude` &lt;dbl&gt;, `_source.idDataSet` &lt;int&gt;,
+#&gt; #   `_source.boost` &lt;dbl&gt;, `_source.agg-device` &lt;chr&gt;,
+#&gt; #   `_source.maxElevation` &lt;dbl&gt;, `_source.parentURI` &lt;chr&gt;,
+#&gt; #   `_source.parentIdDataSet` &lt;int&gt;, `_source.oaiSet` &lt;chr&gt;,
+#&gt; #   `_source.meanPosition.lat` &lt;dbl&gt;, `_source.meanPosition.lon` &lt;dbl&gt;
+</code></pre>
+
+<p>The returned data.frame has a lot of columns. You can limit columns returned with the <code>source</code> parameter.</p>
+
+<p>There are attributes on the data.frame that give you the total number of results found as well as the max score found. </p>
+
+<pre><code class="r">attributes(res)
+</code></pre>
+
+<pre><code>#&gt; $names
+#&gt;  [1] &quot;_index&quot;                     &quot;_type&quot;                     
+#&gt;  [3] &quot;_id&quot;                        &quot;_score&quot;                    
+#&gt;  [5] &quot;_source.internal-datestamp&quot; &quot;_source.minElevation&quot;      
+#&gt;  [7] &quot;_source.sf-authortitle&quot;     &quot;_source.techKeyword&quot;       
+#&gt;  [9] &quot;_source.geocodes&quot;           &quot;_source.sp-loginOption&quot;    
+#&gt; [11] &quot;_source.agg-campaign&quot;       &quot;_source.agg-author&quot;        
+#&gt; [13] &quot;_source.eastBoundLongitude&quot; &quot;_source.URI&quot;               
+#&gt; [15] &quot;_source.agg-pubYear&quot;        &quot;_source.minDateTime&quot;       
+#&gt; [17] &quot;_source.agg-geometry&quot;       &quot;_source.xml-thumb&quot;         
+#&gt; [19] &quot;_source.agg-mainTopic&quot;      &quot;_source.xml&quot;               
+#&gt; [21] &quot;_source.elevationGeocode&quot;   &quot;_source.maxDateTime&quot;       
+#&gt; [23] &quot;_source.xml-sitemap&quot;        &quot;_source.agg-topic&quot;         
+#&gt; [25] &quot;_source.westBoundLongitude&quot; &quot;_source.agg-project&quot;       
+#&gt; [27] &quot;_source.northBoundLatitude&quot; &quot;_source.sp-dataStatus&quot;     
+#&gt; [29] &quot;_source.sp-hidden&quot;          &quot;_source.agg-location&quot;      
+#&gt; [31] &quot;_source.internal-source&quot;    &quot;_source.agg-basis&quot;         
+#&gt; [33] &quot;_source.southBoundLatitude&quot; &quot;_source.idDataSet&quot;         
+#&gt; [35] &quot;_source.boost&quot;              &quot;_source.agg-device&quot;        
+#&gt; [37] &quot;_source.maxElevation&quot;       &quot;_source.parentURI&quot;         
+#&gt; [39] &quot;_source.parentIdDataSet&quot;    &quot;_source.oaiSet&quot;            
+#&gt; [41] &quot;_source.meanPosition.lat&quot;   &quot;_source.meanPosition.lon&quot;  
+#&gt; 
+#&gt; $row.names
+#&gt;  [1]  1  2  3  4  5  6  7  8  9 10
+#&gt; 
+#&gt; $class
+#&gt; [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;
+#&gt; 
+#&gt; $total
+#&gt; [1] 370634
+#&gt; 
+#&gt; $max_score
+#&gt; [1] 1
+</code></pre>
+
+<pre><code class="r">attr(res, &quot;total&quot;)
+</code></pre>
+
+<pre><code>#&gt; [1] 370634
+</code></pre>
+
+<pre><code class="r">attr(res, &quot;max_score&quot;)
+</code></pre>
+
+<pre><code>#&gt; [1] 1
+</code></pre>
+
+<p>To get to the DOIs for each study, use </p>
+
+<pre><code class="r">gsub(&quot;https://doi.org/&quot;, &quot;&quot;, res$`_source.URI`)
+</code></pre>
+
+<pre><code>#&gt;  [1] &quot;10.1594/PANGAEA.784764&quot; &quot;10.1594/PANGAEA.845354&quot;
+#&gt;  [3] &quot;10.1594/PANGAEA.380654&quot; &quot;10.1594/PANGAEA.846724&quot;
+#&gt;  [5] &quot;10.1594/PANGAEA.846729&quot; &quot;10.1594/PANGAEA.707787&quot;
+#&gt;  [7] &quot;10.1594/PANGAEA.67642&quot;  &quot;10.1594/PANGAEA.837347&quot;
+#&gt;  [9] &quot;10.1594/PANGAEA.846977&quot; &quot;10.1594/PANGAEA.846979&quot;
+</code></pre>
+
+<h2>Get data</h2>
+
+<p>The function <code>pg_data</code> fetches datasets for studies by their DOIs.</p>
+
+<pre><code class="r">res &lt;- pg_data(doi = &#39;10.1594/PANGAEA.807580&#39;)
+res[[1]]
+</code></pre>
+
+<pre><code>#&gt; &lt;Pangaea data&gt; 10.1594/PANGAEA.807580
+#&gt;   parent doi: 10.1594/PANGAEA.807580
+#&gt;   url:        https://doi.org/10.1594/PANGAEA.807580
+#&gt;   citation:   Schiebel, Ralf; Waniek, Joanna J; Bork, Matthias; Hemleben, Christoph (2001): Physical oceanography during METEOR cruise M36/6. PANGAEA, https://doi.org/10.1594/PANGAEA.807580,In supplement to: Schiebel, R et al. (2001): Planktic foraminiferal production stimulated by chlorophyll redistribution and entrainment of nutrients. Deep Sea Research Part I: Oceanographic Research Papers, 48(3), 721-740, https://doi.org/10.1016/S0967-0637(00)00065-0
+#&gt;   path:       /Users/sckott/Library/Caches/pangaear/10_1594_PANGAEA_807580.txt
+#&gt;   data:
+#&gt; # A tibble: 32,179 x 13
+#&gt;    Event `Dat… Lati… Long… `Ele… `Dep… `Pre… `Tem…   Sal `Tpo… `Sig… `Sig…
+#&gt;    &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 M36/… 1996…  49.0 -16.5 -4802 0         0  15.7  35.7  15.7  26.4  26.4
+#&gt;  2 M36/… 1996…  49.0 -16.5 -4802 0.990     1  15.7  35.7  15.7  26.4  26.4
+#&gt;  3 M36/… 1996…  49.0 -16.5 -4802 1.98      2  15.7  35.7  15.7  26.4  26.4
+#&gt;  4 M36/… 1996…  49.0 -16.5 -4802 2.97      3  15.7  35.7  15.7  26.4  26.4
+#&gt;  5 M36/… 1996…  49.0 -16.5 -4802 3.96      4  15.7  35.7  15.7  26.4  26.4
+#&gt;  6 M36/… 1996…  49.0 -16.5 -4802 4.96      5  15.7  35.7  15.7  26.4  26.4
+#&gt;  7 M36/… 1996…  49.0 -16.5 -4802 5.95      6  15.7  35.7  15.7  26.4  26.4
+#&gt;  8 M36/… 1996…  49.0 -16.5 -4802 6.94      7  15.7  35.7  15.7  26.4  26.4
+#&gt;  9 M36/… 1996…  49.0 -16.5 -4802 7.93      8  15.7  35.7  15.7  26.4  26.4
+#&gt; 10 M36/… 1996…  49.0 -16.5 -4802 8.92      9  15.7  35.7  15.7  26.4  26.4
+#&gt; # ... with 32,169 more rows, and 1 more variable: `Cond [mS/cm]` &lt;dbl&gt;
+</code></pre>
+
+<p>Search for data then pass one or more DOIs to the <code>pg_data</code> function.</p>
+
+<pre><code class="r">res &lt;- pg_search(query = &#39;water&#39;, bbox = c(-124.2, 41.8, -116.8, 46.1), count = 3)
+pg_data(res$doi[3])[1:3]
+</code></pre>
+
+<pre><code>#&gt; [[1]]
+#&gt; &lt;Pangaea data&gt; 10.1594/PANGAEA.874893
+#&gt;   parent doi: 10.1594/PANGAEA.874893
+#&gt;   url:        https://doi.org/10.1594/PANGAEA.874893
+#&gt;   citation:   Uhlig, Christiane; Loose, Brice (2017): Methane oxidation in Arctic seawater, Utqiagvik, Alaska. PANGAEA, https://doi.org/10.1594/PANGAEA.874893,Supplement to: Uhlig, C; Loose, B (2017): Using stable isotopes and gas concentrations for independent constraints on microbial methane oxidation at Arctic Ocean temperatures. Limnology and Oceanography-Methods, 15 pp, https://doi.org/10.1002/lom3.10199
+#&gt;   path:       /Users/sckott/Library/Caches/pangaear/10_1594_PANGAEA_874893.txt
+#&gt;   data:
+#&gt; # A tibble: 270 x 22
+#&gt;    Event  `Date… Latit… Longi… `Dep… `Dep… `Dep… `Sam… Treat `N [… `Durat…
+#&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt;   &lt;dbl&gt;
+#&gt;  1 Elson… 2016-…   71.3   -156  1.50    NA    NA     7 0.2x…     2  0.0100
+#&gt;  2 Elson… 2016-…   71.3   -156  1.50    NA    NA     7 0.2x…     3  6.03  
+#&gt;  3 Elson… 2016-…   71.3   -156  1.50    NA    NA     7 0.2x…     2  8.88  
+#&gt;  4 Elson… 2016-…   71.3   -156  1.50    NA    NA     7 0.2x…     4 10.8   
+#&gt;  5 Utqia… 2016-…   71.4   -157  6.50    NA    NA    10 0.2x      2  0.0100
+#&gt;  6 Utqia… 2016-…   71.4   -157  6.50    NA    NA    10 0.2x      2  6.15  
+#&gt;  7 Utqia… 2016-…   71.4   -157  6.50    NA    NA    10 0.2x      2  8.99  
+#&gt;  8 Utqia… 2016-…   71.4   -157  6.50    NA    NA    10 0.2x      2 10.8   
+#&gt;  9 Utqia… 2016-…   71.4   -157  5.00    NA    NA    13 0.2x      2  0.0100
+#&gt; 10 Utqia… 2016-…   71.4   -157  5.00    NA    NA    13 0.2x      2  6.15  
+#&gt; # ... with 260 more rows, and 11 more variables: `Duration std dev [±]`
+#&gt; #   &lt;dbl&gt;, `CH4 [nmol/l]` &lt;dbl&gt;, `CH4 std dev [±]` &lt;dbl&gt;, `ln(CH4) [nmol]`
+#&gt; #   &lt;dbl&gt;, `ln(CH4) std dev [±]` &lt;dbl&gt;, `d13C CH4 [per mil PDB]` &lt;dbl&gt;,
+#&gt; #   `d13C CH4 std dev [±]` &lt;dbl&gt;, `Y-axis high mean` &lt;dbl&gt;, `Y-axis high
+#&gt; #   std dev [±]` &lt;dbl&gt;, `Y-axis low mean` &lt;dbl&gt;, `Y-axis low std dev [±]`
+#&gt; #   &lt;dbl&gt;
+#&gt; 
+#&gt; [[2]]
+#&gt; NULL
+#&gt; 
+#&gt; [[3]]
+#&gt; NULL
+</code></pre>
+
+<h2>OAI-PMH metadata</h2>
+
+<p><a href="https://wiki.pangaea.de/wiki/OAI-PMH">OAI-PMH</a> is a standard protocol for serving metadata around objects, in this case datasets. If you are already familiar with OAI-PMH you are in luck as you can can use what you know here. If not familiar, it&#39;s relatively straight-forward. </p>
+
+<p>Note that you can&#39;t get data through these functions, rather only metadata about datasets.</p>
+
+<h3>Identify the service</h3>
+
+<pre><code class="r">pg_identify()
+</code></pre>
+
+<pre><code>#&gt; &lt;Pangaea&gt;
+#&gt;   repositoryName: PANGAEA - Data Publisher for Earth &amp; Environmental Science
+#&gt;   baseURL: https://ws.pangaea.de/oai/provider
+#&gt;   protocolVersion: 2.0
+#&gt;   adminEmail: tech@pangaea.de
+#&gt;   adminEmail: tech@pangaea.de
+#&gt;   earliestDatestamp: 2015-01-01T00:00:00Z
+#&gt;   deletedRecord: transient
+#&gt;   granularity: YYYY-MM-DDThh:mm:ssZ
+#&gt;   compression: gzip
+#&gt;   description: oaipangaea.de:oai:pangaea.de:doi:10.1594/PANGAEA.999999
+</code></pre>
+
+<h3>List metadata formats</h3>
+
+<pre><code class="r">pg_list_metadata_formats()
+</code></pre>
+
+<pre><code>#&gt;   metadataPrefix                                                 schema
+#&gt; 1         oai_dc         http://www.openarchives.org/OAI/2.0/oai_dc.xsd
+#&gt; 2         pan_md      http://ws.pangaea.de/schemas/pangaea/MetaData.xsd
+#&gt; 3            dif http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/dif_v9.4.xsd
+#&gt; 4       iso19139               http://www.isotc211.org/2005/gmd/gmd.xsd
+#&gt; 5  iso19139.iodp               http://www.isotc211.org/2005/gmd/gmd.xsd
+#&gt; 6      datacite3  http://schema.datacite.org/meta/kernel-3/metadata.xsd
+#&gt;                             metadataNamespace
+#&gt; 1 http://www.openarchives.org/OAI/2.0/oai_dc/
+#&gt; 2              http://www.pangaea.de/MetaData
+#&gt; 3  http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/
+#&gt; 4            http://www.isotc211.org/2005/gmd
+#&gt; 5            http://www.isotc211.org/2005/gmd
+#&gt; 6         http://datacite.org/schema/kernel-3
+</code></pre>
+
+<h3>List identifiers</h3>
+
+<pre><code class="r">pg_list_identifiers(from = Sys.Date() - 2, until = Sys.Date())
+</code></pre>
+
+<pre><code>#&gt; # A tibble: 390 x 6
+#&gt;    identifier                                date… setS… setS… setS… setS…
+#&gt;    &lt;chr&gt;                                     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+#&gt;  1 oai:pangaea.de:doi:10.1594/PANGAEA.870867 2017… cita… cita… supp… &lt;NA&gt; 
+#&gt;  2 oai:pangaea.de:doi:10.1594/PANGAEA.724540 2017… cita… cita… supp… &lt;NA&gt; 
+#&gt;  3 oai:pangaea.de:doi:10.1594/PANGAEA.149999 2017… cita… cita… supp… &lt;NA&gt; 
+#&gt;  4 oai:pangaea.de:doi:10.1594/PANGAEA.816714 2017… cita… cita… deNB… supp…
+#&gt;  5 oai:pangaea.de:doi:10.1594/PANGAEA.817715 2017… cita… cita… deNB… supp…
+#&gt;  6 oai:pangaea.de:doi:10.1594/PANGAEA.819855 2017… cita… cita… &lt;NA&gt;  &lt;NA&gt; 
+#&gt;  7 oai:pangaea.de:doi:10.1594/PANGAEA.820004 2017… cita… cita… supp… &lt;NA&gt; 
+#&gt;  8 oai:pangaea.de:doi:10.1594/PANGAEA.858878 2017… cita… cita… deNB… supp…
+#&gt;  9 oai:pangaea.de:doi:10.1594/PANGAEA.880113 2017… cita… cita… supp… &lt;NA&gt; 
+#&gt; 10 oai:pangaea.de:doi:10.1594/PANGAEA.884462 2017… cita… cita… supp… &lt;NA&gt; 
+#&gt; # ... with 380 more rows
+</code></pre>
+
+<h3>List sets</h3>
+
+<pre><code class="r">pg_list_sets()
+</code></pre>
+
+<pre><code>#&gt; # A tibble: 262 x 2
+#&gt;    setSpec   setName                                       
+#&gt;    &lt;chr&gt;     &lt;chr&gt;                                         
+#&gt;  1 ACD       PANGAEA tech-keyword &#39;ACD&#39; (2 data sets)      
+#&gt;  2 ASPS      PANGAEA tech-keyword &#39;ASPS&#39; (59 data sets)    
+#&gt;  3 AWIXRFraw PANGAEA tech-keyword &#39;AWIXRFraw&#39; (1 data sets)
+#&gt;  4 BAH1960   PANGAEA tech-keyword &#39;BAH1960&#39; (2 data sets)  
+#&gt;  5 BAH1961   PANGAEA tech-keyword &#39;BAH1961&#39; (2 data sets)  
+#&gt;  6 BAH1962   PANGAEA tech-keyword &#39;BAH1962&#39; (7 data sets)  
+#&gt;  7 BAH1963   PANGAEA tech-keyword &#39;BAH1963&#39; (7 data sets)  
+#&gt;  8 BAH1964   PANGAEA tech-keyword &#39;BAH1964&#39; (7 data sets)  
+#&gt;  9 BAH1965   PANGAEA tech-keyword &#39;BAH1965&#39; (7 data sets)  
+#&gt; 10 BAH1966   PANGAEA tech-keyword &#39;BAH1966&#39; (6 data sets)  
+#&gt; # ... with 252 more rows
+</code></pre>
+
+<h3>List records</h3>
+
+<pre><code class="r">pg_list_records(from = Sys.Date() - 1, until = Sys.Date())
+</code></pre>
+
+<pre><code>#&gt; # A tibble: 44 x 37
+#&gt;    iden… date… setS… setS… setS… setS… title crea… crea… crea… crea… crea…
+#&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+#&gt;  1 oai:… 2017… cita… cita… deNB… supp… Geoc… Pirr… Händ… Mert… Enge… Pudl…
+#&gt;  2 oai:… 2018… cita… cita… supp… &lt;NA&gt;  Mult… Bart… Tits… Fahl… Stei… Seid…
+#&gt;  3 oai:… 2018… supp… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  Hous… Teys… Rouf… Sale… Stru… Matt…
+#&gt;  4 oai:… 2017… deNB… supp… &lt;NA&gt;  &lt;NA&gt;  Biom… Rama… Marb… Prad… Pero… Lard…
+#&gt;  5 oai:… 2017… supp… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  Cont… Welc… Mund… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+#&gt;  6 oai:… 2018… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  Pore… Paul… Kosc… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+#&gt;  7 oai:… 2018… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  Mete… Olef… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+#&gt;  8 oai:… 2018… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  Mete… Olef… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+#&gt;  9 oai:… 2018… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  Basi… Olef… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+#&gt; 10 oai:… 2018… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  Mete… Olef… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+#&gt; # ... with 34 more rows, and 25 more variables: creator.5 &lt;chr&gt;, creator.6
+#&gt; #   &lt;chr&gt;, source &lt;chr&gt;, publisher &lt;chr&gt;, date &lt;chr&gt;, type &lt;chr&gt;, format
+#&gt; #   &lt;chr&gt;, identifier.2 &lt;chr&gt;, identifier.1 &lt;chr&gt;, description &lt;chr&gt;,
+#&gt; #   language &lt;chr&gt;, rights &lt;chr&gt;, rights.1 &lt;chr&gt;, coverage &lt;chr&gt;, subject
+#&gt; #   &lt;chr&gt;, creator.7 &lt;chr&gt;, creator.8 &lt;chr&gt;, relation &lt;chr&gt;, creator.9
+#&gt; #   &lt;chr&gt;, creator.10 &lt;chr&gt;, creator.11 &lt;chr&gt;, relation.1 &lt;chr&gt;,
+#&gt; #   relation.2 &lt;chr&gt;, relation.3 &lt;chr&gt;, relation.4 &lt;chr&gt;
+</code></pre>
+
+<h3>Get a record</h3>
+
+<pre><code class="r">pg_get_record(identifier = &quot;oai:pangaea.de:doi:10.1594/PANGAEA.788382&quot;)
+</code></pre>
+
+<pre><code>#&gt; $`oai:pangaea.de:doi:10.1594/PANGAEA.788382`
+#&gt; $`oai:pangaea.de:doi:10.1594/PANGAEA.788382`$header
+#&gt; # A tibble: 1 x 3
+#&gt;   identifier                                datestamp            setSpec  
+#&gt;   &lt;chr&gt;                                     &lt;chr&gt;                &lt;chr&gt;    
+#&gt; 1 oai:pangaea.de:doi:10.1594/PANGAEA.788382 2017-08-08T17:50:18Z citable;…
+#&gt; 
+#&gt; $`oai:pangaea.de:doi:10.1594/PANGAEA.788382`$metadata
+#&gt; # A tibble: 1 x 13
+#&gt;   title  crea… sour… publ… date  type  form… iden… desc… lang… righ… cove…
+#&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+#&gt; 1 Trace… Demi… P.P.… PANG… 2012… Data… appl… http… Bioa… en    CC-B… MEDI…
+#&gt; # ... with 1 more variable: subject &lt;chr&gt;
+</code></pre>
+
+</body>
+
+</html>

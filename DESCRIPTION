@@ -4,7 +4,7 @@ Description: Tools to interact with the 'Pangaea' Database
     (<https://www.pangaea.de>), including functions for searching for data,
     fetching 'datasets' by 'dataset' 'ID', and working with the 'Pangaea'
     'OAI-PMH' service.
-Version: 0.3.0
+Version: 0.6.0
 Authors@R: c(person("Scott", "Chamberlain",
 		email = "myrmecocystus@gmail.com", role = c("aut","cre")),
     person("Kara", "Woo", email = "woo.kara@gmail.com", role = "aut"),
@@ -15,12 +15,13 @@ License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/ropensci/pangaear
 BugReports: https://github.com/ropensci/pangaear/issues
-Imports: httr (>= 1.2.0), jsonlite (>= 1.1), rappdirs (>= 0.3.1), xml2
-        (>= 1.0.0), oai (>= 0.2.2), tibble (>= 1.1)
-Suggests: roxygen2 (>= 6.0.1), testthat, covr
+VignetteBuilder: knitr
+Imports: crul (>= 0.4.0), jsonlite (>= 1.5), rappdirs (>= 0.3.1), xml2
+        (>= 1.1.1), oai (>= 0.2.2), tibble (>= 1.1), png
+Suggests: knitr, testthat
 RoxygenNote: 6.0.1
 NeedsCompilation: no
-Packaged: 2017-03-08 14:58:52 UTC; sacmac
+Packaged: 2018-01-03 17:56:48 UTC; sckott
 Author: Scott Chamberlain [aut, cre],
   Kara Woo [aut],
   Andrew MacDonald [aut],
@@ -28,4 +29,4 @@ Author: Scott Chamberlain [aut, cre],
   Gavin Simpson [aut]
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>
 Repository: CRAN
-Date/Publication: 2017-03-08 16:37:46
+Date/Publication: 2018-01-03 18:18:14 UTC
