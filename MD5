@@ -1,7 +1,7 @@
-f911698b6d384a72ed1f0552f4ec3424 *DESCRIPTION
+e210e4c7d19078da3a5dbfa6536f8cbc *DESCRIPTION
 de9532c5aeb8082a5fc9cbee02186d6f *LICENSE
 2e05071b86f6c79f5896e2df7a4083f6 *NAMESPACE
-a35107d39f56fb77c38deaf7c5cbfa55 *NEWS.md
+850c091442254b120196b771a68a5360 *NEWS.md
 a999aab4e82d16d0e9c11b725e288a42 *R/caching.R
 f0c26debbed05bcee0d9253085fc85b7 *R/onload.R
 f2f788e68c028455e7082f0629dcb88b *R/pangaear-package.R
@@ -16,7 +16,7 @@ e9f94c848207039a09cb79d3aa2b1b02 *R/pg_list_identifiers.R
 2ed049a5d5447a2c31058a98b2fc112b *R/pg_search.R
 4a66038a674ad7ba721f28cffabd9985 *R/pg_search_es.R
 267832c5a071a01ecef7ba7d2166cf96 *R/zzz.R
-af267b00a9b305b34573ea99bb65113d *README.md
+733a78123d0745b57d9b3db463c8be1e *README.md
 426451082d145cbdbedd8d46ec5d717f *build/vignette.rds
 449d544fa644dfef0026064e370bbdf6 *inst/doc/pangaear_vignette.Rmd
 c344e82f6c2dd634ea982b21551764cf *inst/doc/pangaear_vignette.html
@@ -29,7 +29,7 @@ c344e82f6c2dd634ea982b21551764cf *inst/doc/pangaear_vignette.html
 18f9c6d6e59576b6abd0808b9d759625 *man/pg_data.Rd
 965c36af53e3944fac23d7a1a352742a *man/pg_get_record.Rd
 ec86e6b23c202c2454f1948b7afb2c82 *man/pg_identify.Rd
-0cddf330ecf6443f4538a55202573ffd *man/pg_list_identifiers.Rd
+8cbc5833f6eaf7bad315b98b643ca579 *man/pg_list_identifiers.Rd
 b7513abb02e29c456ea264b30592c030 *man/pg_list_metadata_formats.Rd
 14dc912b5d38a6d692551dcfe7707f52 *man/pg_list_records.Rd
 dd824c68d4c0e292066e3cf6d7496070 *man/pg_list_sets.Rd
@@ -40,15 +40,15 @@ e691b17f360ccf7157ba5bfa83ba18b2 *tests/fixtures/pg_identify.yml
 3f89a2958d82166989c54092274e114f *tests/fixtures/pg_identify2.yml
 1bbf7540e9fa73a888fc627c4c2bd8e2 *tests/fixtures/pg_list_metadata_formats.yml
 652be5c6eb74989dd141d80866561ba2 *tests/fixtures/pg_list_sets.yml
-8a551bcb4e99712ba0da1badd11a131b *tests/fixtures/pg_search.yml
+c0dfd66f316350580e48541929723fa4 *tests/fixtures/pg_search.yml
 501cf93d6efaade0ccba9b6adf56c1be *tests/fixtures/pg_search_es.yml
 b541d49e85cd248df096193cf0fa18d5 *tests/fixtures/pg_search_es_pagination.yml
-dd68618e0eff8183c86fe2ba68f2428e *tests/fixtures/pg_search_pagination.yml
+6c39f490390f9453d369d2ed4e4921c0 *tests/fixtures/pg_search_pagination.yml
 c7f73260b9a73270e1876931062ca82e *tests/test-all.R
 b2e22cd4a5751d68dbabef226ed11070 *tests/testthat/helper-pangaear.R
 9ab999d6beb33e42b0d9f78f082d4595 *tests/testthat/test-oai_functions.R
 a68e2b23b10302005dfe650ac08ae93f *tests/testthat/test-pg_data.R
 dfa0c5bef3b5b21345ebdb7ded35f7d6 *tests/testthat/test-pg_identify.R
-6e17944beedc8e5e4d0cd1a7da55a490 *tests/testthat/test-pg_search.r
+5da4a9deb9925f781b2c51ce6948181a *tests/testthat/test-pg_search.r
 0d4c86947fe2571070bcccdcebb9682a *tests/testthat/test-pg_search_es.R
 449d544fa644dfef0026064e370bbdf6 *vignettes/pangaear_vignette.Rmd

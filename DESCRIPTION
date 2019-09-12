@@ -4,7 +4,7 @@ Description: Tools to interact with the 'Pangaea' Database
     (<https://www.pangaea.de>), including functions for searching for data,
     fetching 'datasets' by 'dataset' 'ID', and working with the 'Pangaea'
     'OAI-PMH' service.
-Version: 0.8.0
+Version: 0.8.2
 Authors@R: c(person("Scott", "Chamberlain",
 		email = "myrmecocystus@gmail.com", role = c("aut","cre")),
     person("Kara", "Woo", email = "woo.kara@gmail.com", role = "aut"),
@@ -27,7 +27,7 @@ X-schema.org-keywords: Pangaea, environmental science, earth science,
         archive, paleontology, ecology, chemistry, atmosphere
 X-schema.org-isPartOf: https://ropensci.org
 NeedsCompilation: no
-Packaged: 2019-08-19 18:17:20 UTC; sckott
+Packaged: 2019-09-11 22:44:36 UTC; sckott
 Author: Scott Chamberlain [aut, cre],
   Kara Woo [aut],
   Andrew MacDonald [aut],
@@ -35,4 +35,4 @@ Author: Scott Chamberlain [aut, cre],
   Gavin Simpson [aut]
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>
 Repository: CRAN
-Date/Publication: 2019-08-19 19:10:05 UTC
+Date/Publication: 2019-09-12 05:00:02 UTC
